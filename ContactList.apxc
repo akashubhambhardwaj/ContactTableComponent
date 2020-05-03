@@ -1,0 +1,19 @@
+public class ContactList {
+  @AuraEnabled 
+  public static Contact CreateCon(Contact con){
+      insert con;
+      System.debug(con);
+      return con;   
+  }
+   @AuraEnabled 
+  public static String DeleteCon(Id conId){
+      List<Contact> con = new List<Contact>([SELECT Id, Name 
+                                             FROM Contact 
+                                             WHERE Id = :conId
+                                            ]);
+      System.debug(con);
+      delete con;
+      String message = 'Contact Deleted';
+      return message;   
+  }
+}
