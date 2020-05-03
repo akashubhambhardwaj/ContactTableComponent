@@ -1,0 +1,25 @@
+<aura:component controller="ContactList">
+  <aura:attribute name="myContacts" type="Contact[]"/>
+  <aura:handler  name="getContacts" event="c:showContactOnTable" action="{!c.getCons}" />
+  <div>
+      <c:Form/> 
+  </div>
+  <div>
+      <table  class="slds-table slds-table_cell-buffer slds-table_bordered">
+          <tr class="slds-line-height_reset">
+              <th >S.NO</th>
+              <th >NAME</th>
+              <th >MOBILE</th>
+              <th >ACTION</th>
+          </tr>
+          <aura:iteration items="{!v.myContacts}" var="myCon" indexVar="index">
+              <tr>
+                  <td>{!index + 1}</td>
+                  <td>{!myCon.LastName}</td>
+                  <td>{!myCon.Phone}</td>
+                  <td><Lightning:button label="REMOVE" title="{!myCon.Id}" name="{!index}" variant="brand" onclick="{!c.delCons}"/></td> 
+              </tr>
+          </aura:iteration>
+      </table>
+  </div>
+</aura:component>
