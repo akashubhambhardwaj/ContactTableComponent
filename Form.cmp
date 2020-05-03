@@ -1,0 +1,18 @@
+<aura:component controller="ContactList">
+    <aura:registerEvent name="getContacts" type="c:showContactOnTable" />
+    <aura:attribute name="myCon" type="Contact" default="{
+                                                         sobjectName : 'Contact',
+                                                         FirstName   : '',
+                                                         LastName    : '',
+                                                         Email       : '',
+                                                         Phone       : '',
+                                                         }"/>
+    <div class="slds-p-around_x-small">
+        <lightning:input type="text" value="{!v.myCon.LastName}" label="Last Name"
+                         />
+        <lightning:input type="Phone" value="{!v.myCon.Phone}" label="Phone"
+                         required="true"/>
+        <lightning:button label="Create Contact" variant="brand" onclick="{!c.doSave}"/>
+        
+    </div>
+</aura:component>
